@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>数当て</title>
+</head>
+<body>
+    <p>あなたの予想した数字は<%= your %>です．</p>
+    <p>判定：<%= judgement %></p>
+    <p>現在<%= attempt%>回</p>
+    <hr>
+    <form action="/kazu">
+        <input type="text" name="number" required>
+        <label for="hand">予想する数字は？</label>
+        <input type="hidden" name="attempt" value="<%= attempt %>">
+        <input type="submit" values="宝くじ">
+    </form>   
+</body>
+</html>

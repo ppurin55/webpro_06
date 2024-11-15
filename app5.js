@@ -19,7 +19,7 @@ app.get("/icon", (req, res) => {
 });
 
 app.get("/luck", (req, res) => {
-  const num = Math.floor( Math.random() * 6 + 1 );
+  const num = Math.floor( Math.random() * 2 + 1 );
   let luck = '';
   if( num==1 ) luck = '大吉';
   else if( num==2 ) luck = '中吉';
@@ -63,5 +63,78 @@ app.get("/janken", (req, res) => {
   }
   res.render( 'janken', display );
 });
+
+
+
+app.get("/takara",(req,res) => {
+  let number = req.query.number;
+  let attempt = Number(req.query.try)||0;
+  console.log({number,attempt});
+  const num = Math.floor( Math.random() * 100 + 1 );
+  let cpu = '';
+  cpu = num;
+
+  let judgement = '';
+  if (number == cpu){
+    judgement = '一等，大当たりです';
+  }else if (cpu - 3 >= number <= cpu +3) {
+    judgement = '二等，あたりです';
+    attempt += 1;
+  }else if (cpu -5 >= number <= cpu +5) {
+    judgement = '三等，ニアピン賞';
+    attempt += 1;
+  }else {
+    judgement = '外れです';
+  }
+
+  const display = {
+    your: number,
+    cpu: cpu,
+    judgement: judgement,
+    attempt: attempt
+  }
+  res.render('takara',display);
+
+});
+
+
+app.get("/hantyo",(req,res) => {
+  let hand = req.query.hand;
+  let win = Number( req.query.win )||0;
+  let total = Number( req.query.total )||0;
+  let rate = win /total||1;
+  
+  console.log( {hand, win, total,rate});
+  const num = Math.floor( Math.random() * 6 + 1 );
+  let cpu = '';
+  if( num == 1 ) cpu = '半';
+  else if( num == 2 ) cpu = '丁';
+  else if( num == 3 ) cpu = '半';
+  else if( num == 4 ) cpu = '丁';
+  else if( num == 5 ) cpu = '半';
+  else if( num == 6 ) cpu = '丁';
+ 
+  let judgement = '';
+  if (hand === cpu) {
+    judgement = 'あたりです';
+    win += 1;
+  } else  {
+    judgement = '外れです';
+  } 
+  total += 1;
+
+  
+
+  const display = {
+    your: hand,
+    cpu: cpu,
+    judgement: judgement,
+    win: win,
+    total: total,
+    rate: rate
+  }
+
+  res.render('hantyo',display);
+})
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
