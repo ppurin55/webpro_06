@@ -139,4 +139,75 @@ if (number == cpu){
     judgement = '外れです';
   }
 ```
+```mermaid
+flowchart TD;
+start["開始"];
+end1["終了"];
+if{"cpuとユーザーの差"};
+0["大当たりです"];
+3["あたりです"];
+5["ニアピン賞"];
+else["外れです"];
+
+start --> if
+if --> |0| 0 --> end1
+if --> |3| 3 --> end1
+if --> |5| 5 --> end1
+if --> |else| else --> end1
+```
 ###### hantyo
+1. node app5.jsでapp5.jsを起動する
+1. localhost:8080/public/hantyo.htmlにアクセスする
+1. 「半」か「丁」かを入力する
+
+最初ユーザーが勝った回数，試合数を0と定義する．また，勝率をはじめに1と設定する．勝率は勝った回数を試合数で割ったものとする．
+```python
+let win = Number( req.query.win )||0;
+let total = Number( req.query.total )||0;
+let rate = win /total||1;
+```
+
+1~6までのランダムな数字を取得し，奇数の場合は半を偶数の場合は丁を出力する．
+```python
+const num = Math.floor( Math.random() * 6 + 1 );
+  let cpu = '';
+  if( num == 1 ) cpu = '半';
+  else if( num == 2 ) cpu = '丁';
+  else if( num == 3 ) cpu = '半';
+  else if( num == 4 ) cpu = '丁';
+  else if( num == 5 ) cpu = '半';
+  else if( num == 6 ) cpu = '丁';
+```
+ユーザーとcpuの値が同値なら「あたりです」と出力し，勝った回数を１プラスする．また違った場合，「外れです」と出力する．また，最後に試合数を１プラスする．
+```python
+if (hand === cpu) {
+    judgement = 'あたりです';
+    win += 1;
+  } else  {
+    judgement = '外れです';
+  } 
+  total += 1;
+```
+```mermaid
+flowchart TD;
+start["開始"];
+end1["終了"];
+if{"条件に合うか"};
+win["あたりです"];
+loose["外れです"];
+
+start --> if
+if --> |yse|win
+if --> |no|loose
+win --> end1
+loose --> end1
+```
+
+## Gitで管理
+1. ターミナルを起動
+1. app5.jsが入っているファイルが存在するディレクトリに移動する
+1. 以下のコマンドを順に打つ
+"git add ."
+"git commit -am'コメント'"(コメントは自身がそのファイルにつけたいものをつける)
+"git push"
+1. Githubのアクセストークンを入力する(入力しなくても良い場合もある)
