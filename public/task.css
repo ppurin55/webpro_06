@@ -1,0 +1,167 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* コンテナ */
+  .container {
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* タイトル */
+  h1 {
+    text-align: center;
+    color: #555;/* 全体のスタイル */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* コンテナ */
+      .container {
+        width: 90%;
+        max-width: 600px;
+        margin: 2rem auto;
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* タイトル */
+      h1 {
+        text-align: center;
+        color: #555;
+      }
+      
+      /* フォーム */
+      form {
+        margin-bottom: 1.5rem;
+      }
+      
+      form input,
+      form textarea,
+      form button {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      
+      form button {
+        background: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      
+      form button:hover {
+        background: #218838;
+      }
+      
+      /* ボタンとアクション */
+      .actions button,
+      .actions input {
+        width: calc(100% - 2rem);
+        margin: 0.5rem auto;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      
+      .actions button {
+        background: #007bff;
+        color: white;
+      }
+      
+      .actions button:hover {
+        background: #0056b3;
+      }
+      
+      /* タスク一覧 */
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      li {
+        padding: 0.8rem;
+        border-bottom: 1px solid #ccc;
+      }
+      
+  }
+  
+  /* フォーム */
+  form {
+    margin-bottom: 1.5rem;
+  }
+  
+  form input,
+  form textarea,
+  form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  form button {
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background: #218838;
+  }
+  
+  /* ボタンとアクション */
+  .actions button,
+  .actions input {
+    width: calc(100% - 2rem);
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .actions button {
+    background: #007bff;
+    color: white;
+  }
+  
+  .actions button:hover {
+    background: #0056b3;
+  }
+  
+  /* タスク一覧 */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 0.8rem;
+    border-bottom: 1px solid #ccc;
+  }
+  

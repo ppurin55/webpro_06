@@ -1,0 +1,66 @@
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
+let bbs = [];
+
+// メッセージ数をチェック
+app.post("/check", (req, res) => {
+  // 本来はここでDBMSに問い合わせる
+  res.json( {number: bbs.length });
+});
+
+// メッセージを読む
+app.post("/read", (req, res) => {
+  // 本来はここでDBMSに問い合わせる
+  const start = Number( req.body.start );
+  console.log( "read -> " + start );
+  if( start==0 ) res.json( {messages: bbs });
+  else res.json( {messages: bbs.slice( start )});
+});
+
+// メッセージを投稿する
+app.post("/post", (req, res) => {
+  const name = req.body.name;
+  const message = req.body.message;
+  console.log( [name, message] );
+  // 本来はここでDBMSに保存する
+  bbs.push( { name: name, message: message } );
+  res.json( {number: bbs.length } );
+});
+
+// すべてのメッセージを削除する
+app.post("/deleteAll", (req, res) => {
+  bbs = [];
+  console.log("All messages deleted");
+  res.json({ message: "All messages have been deleted." });
+});
+
+// 特定のメッセージを削除する
+app.post("/delete", (req, res) => {
+  const index = Number(req.body.index);
+  if (index >= 0 && index < bbs.length) {
+    bbs.splice(index, 1);
+    console.log(`Message at index ${index} deleted`);
+    res.json({ message: "Message deleted successfully." });
+  } else {
+    res.status(400).json({ error: "Invalid index." });
+  }
+});
+
+// メッセージを更新する
+app.post("/update", (req, res) => {
+  const index = Number(req.body.index);
+  const newMessage = req.body.message;
+  if (index >= 0 && index < bbs.length) {
+    bbs[index].message = newMessage;
+    console.log(`Message at index ${index} updated`);
+    res.json({ message: "Message updated successfully." });
+  } else {
+    res.status(400).json({ error: "Invalid index." });
+  }
+});
+
+app.listen(8080, () => console.log("Example app listening on port 8080!"));
